@@ -1,0 +1,280 @@
+(djangoEnv) Rohans-MacBook-Pro:django_files rohan$ django-admin startproject users
+(djangoEnv) Rohans-MacBook-Pro:django_files rohan$ cd users
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ mkdir apps
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ cd apps
+(djangoEnv) Rohans-MacBook-Pro:apps rohan$  touch __init__.py
+(djangoEnv) Rohans-MacBook-Pro:apps rohan$ python ../manage.py startapp user_login
+(djangoEnv) Rohans-MacBook-Pro:apps rohan$ cd ..
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 13 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+
+October 23, 2017 - 19:20:21
+Django version 1.10, using settings 'users.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+[23/Oct/2017 19:20:25] "GET / HTTP/1.1" 200 1767
+Performing system checks...
+
+Unhandled exception in thread started by <function wrapper at 0x104d98de8>
+Traceback (most recent call last):
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/utils/autoreload.py", line 226, in wrapper
+    fn(*args, **kwargs)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/commands/runserver.py", line 121, in inner_run
+    self.check(display_num_errors=True)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/base.py", line 385, in check
+    include_deployment_checks=include_deployment_checks,
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/base.py", line 372, in _run_checks
+    return checks.run_checks(**kwargs)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/checks/registry.py", line 81, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/checks/urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/checks/urls.py", line 24, in check_resolver
+    for pattern in resolver.url_patterns:
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/urls/resolvers.py", line 310, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/urls/resolvers.py", line 303, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/Users/rohan/django_files/users/users/urls.py", line 19, in <module>
+    url(r'^', include('apps.first_app.urls')) # And now we use the include function to pull in our first_app.urls...
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/conf/urls/__init__.py", line 50, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+ImportError: No module named first_app.urls
+^C(djangoEnv) Rohans-MacBook-Pro:users rohan$ cd apps/user_login
+(djangoEnv) Rohans-MacBook-Pro:user_login rohan$ touch urls.py
+(djangoEnv) Rohans-MacBook-Pro:user_login rohan$ cd ..
+(djangoEnv) Rohans-MacBook-Pro:apps rohan$ cd ..
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py makemigrations
+No changes detected
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying sessions.0001_initial... OK
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py makemigrations
+Migrations for 'user_login':
+  apps/user_login/migrations/0001_initial.py:
+    - Create model Admin
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user_login
+Running migrations:
+  Rendering model states... DONE
+  Applying user_login.0001_initial... OK
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py shell
+Python 2.7.10 (default, Feb  7 2017, 00:08:15) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.34)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.user_login.models import *
+>>> 
+KeyboardInterrupt
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> ^D
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py makemigrations
+Did you rename the user_login.Admin model to user? [y/N] ^[[A^[[A^CTraceback (most recent call last):
+  File "manage.py", line 22, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/__init__.py", line 367, in execute_from_command_line
+    utility.execute()
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/__init__.py", line 359, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/base.py", line 305, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/base.py", line 356, in execute
+    output = self.handle(*args, **options)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/core/management/commands/makemigrations.py", line 167, in handle
+    migration_name=self.migration_name,
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/migrations/autodetector.py", line 47, in changes
+    changes = self._detect_changes(convert_apps, graph)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/migrations/autodetector.py", line 164, in _detect_changes
+    self.generate_renamed_models()
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/migrations/autodetector.py", line 466, in generate_renamed_models
+    if self.questioner.ask_rename_model(rem_model_state, model_state):
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/migrations/questioner.py", line 203, in ask_rename_model
+    new_model_state.name), False)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/migrations/questioner.py", line 88, in _boolean_input
+    result = input("%s " % question)
+KeyboardInterrupt
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py makemigrations
+Did you rename the user_login.Admin model to user? [y/N] y
+Migrations for 'user_login':
+  apps/user_login/migrations/0002_auto_20171023_1946.py:
+    - Rename model Admin to user
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user_login
+Running migrations:
+  Rendering model states... DONE
+  Applying user_login.0002_auto_20171023_1946... OK
+The following content types are stale and need to be deleted:
+
+    user_login | admin
+
+Any objects related to these content types by a foreign key will also
+be deleted. Are you sure you want to delete these content types?
+If you're unsure, answer 'no'.
+
+    Type 'yes' to continue, or 'no' to cancel: yes
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user_login
+Running migrations:
+  No migrations to apply.
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py makemigrations
+No changes detected
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user_login
+Running migrations:
+  No migrations to apply.
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py shell
+Python 2.7.10 (default, Feb  7 2017, 00:08:15) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.34)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.user_login.models import *
+>>> user.object.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'user' has no attribute 'object'
+>>> user.objects.all()
+<QuerySet []>
+>>> user.objects.create(first_name="neethu",last_name="reddy",email="neethureddy@gmail.com",age="20")
+<user: user object>
+>>> user.objects.create(first_name="maddi",last_name="reddy",email="maddireddy@gmail.com",age="30")
+<user: user object>
+>>> user.objects.create(first_name="chintu",last_name="reddy",email="chintureddy@gmail.com",age="36")
+<user: user object>
+>>> user.objects.all()
+<QuerySet [<user: user object>, <user: user object>, <user: user object>]>
+>>> user.objects.first().name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'user' object has no attribute 'name'
+>>> user.objects.first().first_name
+u'neethu'
+>>> user.objects.first().last_name
+u'reddy'
+>>> user.objects.first().email
+u'neethureddy@gmail.com'
+>>> user.objects.first().age
+20
+>>> user.objects.last().age
+36
+>>> user.objects.get(id=3)
+<user: user object>
+>>> user.object.get(id=3)\
+... user.object.get(id=3)
+  File "<console>", line 2
+    user.object.get(id=3)
+       ^
+SyntaxError: invalid syntax
+>>> user.object.get(id=3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'user' has no attribute 'object'
+>>> user.objects.get(id=3)
+<user: user object>
+>>> user.first_name
+<django.db.models.query_utils.DeferredAttribute object at 0x1046e5f50>
+>>> user.objects.filter(id="3")
+<QuerySet [<user: user object>]>
+>>> user.objects.filter(name="neethu")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/query.py", line 794, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/query.py", line 812, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1227, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1253, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1133, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1019, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/Users/rohan/flaskfiles/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1327, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+FieldError: Cannot resolve keyword 'name' into field. Choices are: age, created_at, email, first_name, id, last_name, updated_at
+>>> user.objects.filter(first_name="neethu")
+<QuerySet [<user: user object>]>
+>>> ^D
+(djangoEnv) Rohans-MacBook-Pro:users rohan$ python manage.py shell
+Python 2.7.10 (default, Feb  7 2017, 00:08:15) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.34)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> user.objects.filter(first_name="neethu")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'user' is not defined
+>>> from apps.user_login import *
+>>> from apps.user_login.models import *
+>>> user.objects.filter(first_name="neethu")
+<QuerySet [user object: neethu reddy neethureddy@gmail.com 20 ]>
+>>> user.objects.order_by("first_name")
+<QuerySet [user object: chintu reddy chintureddy@gmail.com 36 , user object: maddi reddy maddireddy@gmail.com 30 , user object: neethu reddy neethureddy@gmail.com 20 ]>
+>>> user.objects.get(id="3")
+user object: chintu reddy chintureddy@gmail.com 36 
+>>> c = user.objects.last()
+>>> c.lst_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'user' object has no attribute 'lst_name'
+>>> c.last_name
+u'reddy'
+>>> c.last_name="reddy" # set last_name to be "maddi"
+>>> c.save()
+>>> c.last_name
+'reddy'
+>>> print c
+user object
+>>> last_name = c.last_name
+>>> print last_name
+reddy
+>>> c.last_name = "maddi"
+>>> c.save()
+>>> c.last_name 
+'maddi'
+>>> user.objects.get(id=2).delete
+<bound method user.delete of user object: maddi reddy maddireddy@gmail.com 30 >
+>>> user.objects.all()
+<QuerySet [user object: neethu reddy neethureddy@gmail.com 20 , user object: maddi reddy maddireddy@gmail.com 30 , user object: chintu maddi chintureddy@gmail.com 36 ]>
+>>> user.objects.all()
+<QuerySet [user object: neethu reddy neethureddy@gmail.com 20 , user object: maddi reddy maddireddy@gmail.com 30 , user object: chintu maddi chintureddy@gmail.com 36 ]>
+>>> user.objects.get(id=2).delete()
+(1, {u'user_login.user': 1})
+>>> user.objects.all()
+<QuerySet [user object: neethu reddy neethureddy@gmail.com 20 , user object: chintu maddi chintureddy@gmail.com 36 ]>
+>>> 
